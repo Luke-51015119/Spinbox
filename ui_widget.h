@@ -11,7 +11,6 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpinBox>
@@ -23,12 +22,9 @@ QT_BEGIN_NAMESPACE
 class Ui_Widget
 {
 public:
-    QWidget *widget;
     QVBoxLayout *verticalLayout_2;
-    QHBoxLayout *horizontalLayout_2;
     QSpinBox *spinBox;
     QSlider *horizontalSlider;
-    QVBoxLayout *verticalLayout;
     QLCDNumber *lcdNumber;
 
     void setupUi(QWidget *Widget)
@@ -36,41 +32,27 @@ public:
         if (Widget->objectName().isEmpty())
             Widget->setObjectName("Widget");
         Widget->resize(800, 600);
-        widget = new QWidget(Widget);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(180, 200, 341, 191));
-        verticalLayout_2 = new QVBoxLayout(widget);
+        verticalLayout_2 = new QVBoxLayout(Widget);
         verticalLayout_2->setObjectName("verticalLayout_2");
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName("horizontalLayout_2");
-        spinBox = new QSpinBox(widget);
+        spinBox = new QSpinBox(Widget);
         spinBox->setObjectName("spinBox");
         spinBox->setMinimum(-100);
         spinBox->setMaximum(100);
 
-        horizontalLayout_2->addWidget(spinBox);
+        verticalLayout_2->addWidget(spinBox);
 
-        horizontalSlider = new QSlider(widget);
+        horizontalSlider = new QSlider(Widget);
         horizontalSlider->setObjectName("horizontalSlider");
         horizontalSlider->setMinimum(-100);
         horizontalSlider->setMaximum(100);
         horizontalSlider->setOrientation(Qt::Orientation::Horizontal);
 
-        horizontalLayout_2->addWidget(horizontalSlider);
+        verticalLayout_2->addWidget(horizontalSlider);
 
-
-        verticalLayout_2->addLayout(horizontalLayout_2);
-
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setObjectName("verticalLayout");
-        lcdNumber = new QLCDNumber(widget);
+        lcdNumber = new QLCDNumber(Widget);
         lcdNumber->setObjectName("lcdNumber");
 
-        verticalLayout->addWidget(lcdNumber);
-
-
-        verticalLayout_2->addLayout(verticalLayout);
+        verticalLayout_2->addWidget(lcdNumber);
 
 
         retranslateUi(Widget);
